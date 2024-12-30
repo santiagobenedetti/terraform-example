@@ -19,6 +19,9 @@ provider "aws" {
 resource "aws_instance" "my_instance_name" {
   ami           = "ami-011899242bb902164" # Ubuntu 20.04 LTS // us-east-1
   instance_type = "t2.micro"
+
+  vpc_security_group_ids = [module.terraform-sg.security_group_id]
+  
   tags = {
     TF_MANAGED = true
   }
